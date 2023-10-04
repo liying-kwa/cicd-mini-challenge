@@ -1,0 +1,51 @@
+stages:
+  - lint # Do not change this lint stage
+  - test # Do not change this test stage
+  - build
+
+lint:
+  stage: lint
+  image: registry.gitlab.com/mightysaverbunny/cicd-mini-challenge/python:latest
+  script:
+    - pip install flake8
+    - flake8 app
+    - cat $home/logs
+  # This is the lint job. Do not edit this job.
+
+test:
+  stage: test
+  image: registry.gitlab.com/mightysaverbunny/cicd-mini-challenge/python:latest
+  before_script:
+    - source ~/.bashrc
+  script:
+    - pip install -r requirements.txt
+    - export PYTHONPATH="$CI_PROJECT_DIR"
+    - run_test
+  # This is the test job. Do not edit this job.
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.0-debug
+    entrypoint: [""]
+  variables:
+    # Set the Docker image name and tag
+    DOCKER_REGISTRY: https://index.docker.io/v1/
+    DOCKER_IMAGE_NAME: your-image-name
+    DOCKER_IMAGE_TAG: latest
+  before_script:
+    # Check variables are defined
+    - \[ ! -z "${DOCKER_USERNAME}" ]
+    - \[ ! -z "${DOCKER_PAT}" ]
+    - \[ ! -z "${API_KEY}" ]
+    # Configure Kaniko
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"${DOCKER_REGISTRY}\":{\"username\":\"${DOCKER_USERNAME}\",\"password\":\"${DOCKER_PAT}\"}}}" > /kaniko/.docker/config.json
+  script:
+    - |
+      /kaniko/executor \
+        --context "${CI_PROJECT_DIR}" \
+        --dockerfile "${CI_PROJECT_DIR}/Dockerfile" \
+        --destination "${DOCKER_USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}" \
+        --build-arg API_KEY=${API_KEY}
+    # This is the build job.

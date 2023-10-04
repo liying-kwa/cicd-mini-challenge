@@ -1,0 +1,11 @@
+fastapi==0.97.0
+fastapi.middleware
+flake8==6.0.0
+pydantic==1.10.9
+pyflakes==3.0.1
+requests==2.31.0
+yapf==0.40.1
+python-dotenv==1.0.0
+uvicorn
+httpx
+pytest

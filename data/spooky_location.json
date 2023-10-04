@@ -1,0 +1,43 @@
+[
+  {
+      "name": "The Abandoned Mansion at Telok Blangah Rise",
+      "area": "South",
+      "nearest_mrt": "Telok Blangah"
+  },
+  {
+      "name": "The Haunted Well of Bedok Reservoir",
+      "area": "East",
+      "nearest_mrt": "Bedok Reservoir"
+  },
+  {
+      "name": "The Cursed Alley behind Tampines Mall",
+      "area": "East",
+      "nearest_mrt": "Tampines"
+  },
+  {
+      "name": "The Ghostly Theatre at Dhoby Ghaut Green",
+      "area": "Central",
+      "nearest_mrt": "Dhoby Ghaut"
+  },
+  {
+      "name": "The Whispering Woods of Bishan Park",
+      "area": "Central",
+      "nearest_mrt": "Bishan"
+  },
+  {
+      "name": "The Forbidden Shrine near Hougang Plaza",
+      "area": "North-East",
+      "nearest_mrt": "Hougang"
+  },
+  {
+    "name": "The Phantom Lagoon of Jurong Lake Gardens",
+    "area": "West",
+    "nearest_mrt": "Lakeside"
+  },
+  {
+    "name": "The Eerie Playground of Jurong West Street",
+    "area": "West",
+    "nearest_mrt": "Boon Lay"
+  }
+
+]
