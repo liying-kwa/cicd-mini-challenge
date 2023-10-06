@@ -14,6 +14,8 @@ During this challenge, **flags** are hidden within certain jobs of the CI/CD pip
 
 Mighty Saver Rabbit awaits your return from this ghostly endeavor with bated breath!
 
+**NOTE:** Using GitLab's shared runner for the CI/CD pipeline requires credit card information for verification. **Rest assured, you will not be charged.** This is a preventive measure by GitLab to counter abuse.
+
 # Contents
 
 [[_TOC_]]
