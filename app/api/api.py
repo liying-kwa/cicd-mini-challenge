@@ -38,11 +38,10 @@ def get_latlong(mrt_station: str, station_list: list[Station]):
 def nearest_spooky_site(station_name: str):
     """
     Task: Find the spooky location with the nearest MRT station to the one specified
-    TODO: fix function logic
     """
 
     # Get list of MRT stations
-    mrt_stations = read_json("mrt.json")
+    mrt_stations = read_json("data/mrt.json")
     mrt_stations = [
         Station.parse_obj(mrt_station) for mrt_station in mrt_stations
     ]
@@ -51,7 +50,7 @@ def nearest_spooky_site(station_name: str):
     target_lat, target_lon = get_latlong(station_name, mrt_stations)
 
     # Get list of spooky locations
-    spooky_locations = read_json("dat/haunted_location.json")
+    spooky_locations = read_json("data/spooky_location.json")
 
     closest_location = None
     closest_distance = float("inf")  # Initialize with a large value
@@ -65,7 +64,7 @@ def nearest_spooky_site(station_name: str):
         distance = utils.calculate_distance(lat, lon, target_lat, target_lon)
 
         # If this distance is less than the closest recorded so far, update the closest location and distance
-        if distance > closest_distance:
+        if distance < closest_distance:
             closest_distance = distance
             closest_location = location
 
