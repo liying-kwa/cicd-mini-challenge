@@ -33,7 +33,7 @@ def hello(name: str):
         {"message": "Hello John!"}
     """
     logger.info("called 'hello' endpoint")
-    return {"message": f"Hello Mighty Saver Bunny!"}
+    return {"message": f"Hello {name}!"}
 
 
 @router.get(
@@ -66,7 +66,7 @@ def get_message():
             summary="Get the details of spooky site nearest to you")
 def nearest_spooky_site(station: str):
     """
-    This function is an endpoint for the GET request at the "/location" route. It will return the location 
+    This function is an endpoint for the GET request at the "/location" route. It will return the location
     and details of the nearest spooky site based on the provided MRT station name.
     Parameters:
 
