@@ -3,12 +3,19 @@ import random
 
 from fastapi import APIRouter
 from fastapi import HTTPException
+from fastapi_healthcheck import HealthCheckFactory, healthCheckRoute
 
 from app.api import api
 from app.model.Message import Message
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
+
+# Add Health Checks
+_healthChecks = HealthCheckFactory()
+
+router.add_api_route('/health',
+                     endpoint=healthCheckRoute(factory=_healthChecks))
 
 
 @router.get("/hello")
