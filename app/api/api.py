@@ -43,7 +43,9 @@ def nearest_spooky_site(station_name: str):
 
     # Get list of MRT stations
     mrt_stations = read_json("mrt.json")
-    mrt_stations = [Station.parse_obj(mrt_station) for mrt_station in mrt_stations]
+    mrt_stations = [
+        Station.parse_obj(mrt_station) for mrt_station in mrt_stations
+    ]
 
     # Get the latitude and longitude of the specified station
     target_lat, target_lon = get_latlong(station_name, mrt_stations)
